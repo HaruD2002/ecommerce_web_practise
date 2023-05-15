@@ -78,10 +78,19 @@ WSGI_APPLICATION = 'ecmmerce_django.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# configure database name,user and password
+DB_NAME = env('DB_NAME', default='default')
+DB_USER = env('USER', default='root')
+DB_PASSWORD = env('PASSWORD', default='1234')
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql', 
+        'NAME': DB_NAME,
+        'USER': DB_USER,
+        'PASSWORD': DB_PASSWORD,
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 
